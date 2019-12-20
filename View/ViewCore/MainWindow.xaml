@@ -30,8 +30,9 @@
         
             <TextBox materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             <TextBox materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-          
-               <Button Content="Login" Margin="0,20"  HorizontalAlignment="Center"/>
+                    <Button Content="Forgot Password?"  HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" FontSize="8"/>
+
+                    <Button Content="Login" Margin="0,10"  HorizontalAlignment="Center"/>
                <Button Content="Register Now"  HorizontalAlignment="Center" Style="{StaticResource MaterialDesignToolButton}"/>
             
             
