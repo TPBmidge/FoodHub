@@ -1,0 +1,34 @@
+﻿<Window x:Class="FoodHub.View.LoginView"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FoodHub.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="330" Width="300"  AllowsTransparency="True" Background="Transparent">
+   <Grid MouseLeftButtonDown="Window_MouseDown">
+      <Button Margin="3" VerticalAlignment="Top" HorizontalAlignment="Right" Panel.ZIndex="1" Background="Transparent" Style="{StaticResource MaterialDesignFlatButton}" Padding="5" Click="Shutdown_Button_Click">
+         <materialDesign:PackIcon Height="20" Width="20" Kind="Shutdown" Background="Transparent" Foreground="Red"/>
+      </Button>
+      <Border Background="White" 
+              VerticalAlignment="Stretch" Padding="30" 
+              CornerRadius="15">
+         <Border.Effect>
+            <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+         </Border.Effect>
+
+         <StackPanel Margin="0,10,0,0">
+            <TextBlock Text="FoodHub" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center"/>
+
+            <TextBox materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+
+            <Button Content="Login" Margin="0,20"  HorizontalAlignment="Center"/>
+            <Button Content="Register Now"  HorizontalAlignment="Center" Style="{StaticResource MaterialDesignToolButton}" Click="Register_Button_Click"/>
+         </StackPanel>
+      </Border>
+   </Grid>
+</Window>

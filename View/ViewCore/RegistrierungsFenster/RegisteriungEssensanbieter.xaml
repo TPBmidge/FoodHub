@@ -1,14 +1,12 @@
-﻿<Window x:Class="FoodHub.View.MainWindow"
+﻿<Window x:Class="FoodHub.View.RegistrierungsFenster.RegisteriungEssensanbieter"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FoodHub.View"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:FoodHub.View.RegistrierungsFenster"
         mc:Ignorable="d"
-        WindowStyle="None"
-        Title="MainWindow" Height="330" Width="300">
-   <Grid>
-     
-   </Grid>
+        Title="RegisteriungEssensanbieter" Height="450" Width="800">
+    <Grid>
+        
+    </Grid>
 </Window>

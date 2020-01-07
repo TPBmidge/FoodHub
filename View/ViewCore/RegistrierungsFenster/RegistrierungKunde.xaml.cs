@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FoodHub.View
+namespace FoodHub.View.RegistrierungsFenster
 {
   /// <summary>
-  /// Interaction logic for MainWindow.xaml
+  /// Interaction logic for RegistrierungKunde.xaml
   /// </summary>
-  public partial class MainWindow : Window
+  public partial class RegistrierungKunde : Window
   {
-    public MainWindow()
+    public RegistrierungKunde()
     {
       InitializeComponent();
     }
