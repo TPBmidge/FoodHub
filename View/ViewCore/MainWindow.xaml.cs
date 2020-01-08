@@ -24,5 +24,16 @@ namespace FoodHub.View
     {
       InitializeComponent();
     }
+
+    private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+      if (e.ChangedButton == MouseButton.Left)
+        this.DragMove();
+    }
+
+    private void Shutdown_Button_Click(object sender, RoutedEventArgs e)
+    {
+      this.Close();
+    }
   }
 }

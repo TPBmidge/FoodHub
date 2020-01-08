@@ -1,6 +1,6 @@
 using GalaSoft.MvvmLight;
 
-namespace FoodHub.ViewModel
+namespace FoodHub.Logic
 {
   public class MainViewModel : ViewModelBase
   {

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreData", "Data\CoreData\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\ViewCore\View.csproj", "{FE68D81C-BE70-4C63-9E90-2CCA46761F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel\ViewModel.csproj", "{7CBCD810-AD59-45C9-9DD1-7BFC750DC488}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "ViewModel\ViewModel\Logic.csproj", "{7CBCD810-AD59-45C9-9DD1-7BFC750DC488}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

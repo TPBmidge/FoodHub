@@ -1,18 +1,27 @@
-﻿using GalaSoft.MvvmLight;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
-namespace FoodHub.ViewModel
+namespace FoodHub.Logic.BaseTypes
 {
-  public abstract class BaseViewModel : ViewModelBase, IDataErrorInfo
+  public abstract class BaseModel : INotifyPropertyChanged, IDataErrorInfo
   {
+
     private static List<PropertyInfo> _propertyInfos;
+
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+
+    public BaseModel()
+    {
+      InitCommands();
+    }
+
 
     public string Error => string.Empty;
 
@@ -25,7 +34,19 @@ namespace FoodHub.ViewModel
       }
     }
 
-    protected abstract void OnErrorsCollected();
+    protected virtual void InitCommands()
+    {
+    }
+
+
+    protected virtual void OnErrorsCollected()
+    {
+    }
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
     private void CollectErrors()
     {
@@ -34,8 +55,8 @@ namespace FoodHub.ViewModel
           prop =>
           {
             var currentValue = prop.GetValue(this);
-            var minLenAttr = prop.GetCustomAttribute<MinLengthAttribute>();
             var requiredAttr = prop.GetCustomAttribute<RequiredAttribute>();
+            var minAttr = prop.GetCustomAttribute<MinLengthAttribute>();
             var maxLenAttr = prop.GetCustomAttribute<MaxLengthAttribute>();
             if (requiredAttr != null)
             {
@@ -51,40 +72,39 @@ namespace FoodHub.ViewModel
                 Errors.Add(prop.Name, maxLenAttr.ErrorMessage);
               }
             }
-            if (minLenAttr != null)
+            if (minAttr != null)
             {
-              if ((currentValue?.ToString() ?? string.Empty).Length < minLenAttr.Length)
+              if ((currentValue?.ToString() ?? string.Empty).Length < minAttr.Length)
               {
-                Errors.Add(prop.Name, minLenAttr.ErrorMessage);
+                Errors.Add(prop.Name, minAttr.ErrorMessage);
               }
             }
             // further attributes
           });
       // we have to this because the Dictionary does not implement INotifyPropertyChanged            
-      RaisePropertyChanged(() => HasErrors);
-      RaisePropertyChanged(() => IsOk);
+      OnPropertyChanged(nameof(HasErrors));
+      OnPropertyChanged(nameof(IsOk));
       // commands do not recognize property changes automatically
       OnErrorsCollected();
     }
 
+    
     public bool HasErrors => Errors.Any();
 
+
     public bool IsOk => !HasErrors;
+
 
     protected List<PropertyInfo> PropertyInfos
     {
       get
       {
-        if (_propertyInfos == null)
-        {
-          // TODO filter for other attributes
-          _propertyInfos =
-              GetType()
-                  .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                  .Where(prop => prop.IsDefined(typeof(RequiredAttribute), true) || prop.IsDefined(typeof(MaxLengthAttribute), true) || prop.IsDefined(typeof(MinLengthAttribute), true))
-                  .ToList();
-        }
-        return _propertyInfos;
+        return _propertyInfos
+               ?? (_propertyInfos =
+                   GetType()
+                       .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                       .Where(prop => prop.IsDefined(typeof(RequiredAttribute), true) || prop.IsDefined(typeof(MaxLengthAttribute), true) || prop.IsDefined(typeof(MinLengthAttribute), true))
+                       .ToList());
       }
     }
 

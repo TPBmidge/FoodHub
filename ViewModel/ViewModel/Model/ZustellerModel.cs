@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight;
+﻿using FoodHub.Logic.BaseTypes;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -8,23 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FoodHub.ViewModel
+namespace FoodHub.Logic.Model
 {
-  public class RegistrierungZustellerViewModel : BaseViewModel
+  public class ZustellerModel : BaseModel
   {
-    public RegistrierungZustellerViewModel()
+    protected override void InitCommands()
     {
+      base.InitCommands();
       OkCommand = new RelayCommand(
-                () =>
-                {
-                  Trace.WriteLine("OK");
-                },
-                () => IsOk);
-
+          () =>
+          {
+            Trace.WriteLine("OK");
+          },
+          () => IsOk);
     }
-
     protected override void OnErrorsCollected()
     {
+      base.OnErrorsCollected();
       OkCommand.RaiseCanExecuteChanged();
     }
 
@@ -34,6 +34,6 @@ namespace FoodHub.ViewModel
     [MinLength(5, ErrorMessage = "Bitte minimum 5 Zeichen eingeben")]
     public string Password { get; set; }
 
-    public RelayCommand OkCommand { get; }
+    public RelayCommand OkCommand { get; private set; }
   }
 }

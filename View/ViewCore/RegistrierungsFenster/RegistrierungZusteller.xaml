@@ -11,6 +11,29 @@
         Title="RegistrierungZusteller" Height="600" Width="800"  AllowsTransparency="True" Background="Transparent"
         DataContext="{Binding Zusteller, Source={StaticResource Locator}}">
 
+   <Window.Resources>
+      <ResourceDictionary>
+         <ControlTemplate x:Key="ErrorTemplate">
+            <DockPanel LastChildFill="True">
+               <Border DockPanel.Dock="Top" BorderThickness="1">
+                  <AdornedElementPlaceholder />
+               </Border>
+            </DockPanel>
+         </ControlTemplate>
+         <Style x:Key="MaterialDesignFloatingHintTextBox" 
+                BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Margin" Value="0 0 0 10"/>
+            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ErrorTemplate}" />
+            <Style.Triggers>
+               <Trigger Property="Validation.HasError" Value="true">
+                  <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+               </Trigger>
+            </Style.Triggers>
+         </Style>
+      </ResourceDictionary>
+   </Window.Resources>
    <Grid MouseLeftButtonDown="Window_MouseDown">
       <Button Margin="3" VerticalAlignment="Top" HorizontalAlignment="Right" Panel.ZIndex="1" Background="Transparent" Style="{StaticResource MaterialDesignFlatButton}" Padding="5" Click="Shutdown_Button_Click">
          <materialDesign:PackIcon Height="20" Width="20" Kind="Shutdown" Background="Transparent" Foreground="Red"/>
@@ -39,23 +62,23 @@
                   <RowDefinition Height="*"/>
                   <RowDefinition Height="*"/>
                </Grid.RowDefinitions>
-               <TextBox Grid.Column="0" Grid.Row="0" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="2" Grid.Row="0" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Surname" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
-               <TextBox Grid.Column="0" Grid.Row="1" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Date of birth" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="2" Grid.Row="1" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="E-Mail Adress" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="0" Grid.Row="2" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Phone" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="2" Grid.Row="2" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Postal code" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="0" Grid.Row="3" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Location" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="2" Grid.Row="3" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Street" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="0" Grid.Row="4" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="House number" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="2" Grid.Row="4" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="User name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-               <TextBox Grid.Column="0" Grid.Row="5" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
-               <TextBox Grid.Column="2" Grid.Row="5" Margin = "0 0 0 10" materialDesign:HintAssist.Hint="Re-enter password" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="0" Grid.Row="0" materialDesign:HintAssist.Hint="Name" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="2" Grid.Row="0"  materialDesign:HintAssist.Hint="Surname" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" 
+                        Text="{Binding ZustellerModel.Lastname , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+               <TextBox Grid.Column="0" Grid.Row="1" materialDesign:HintAssist.Hint="Date of birth" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="2" Grid.Row="1" materialDesign:HintAssist.Hint="E-Mail Adress" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="0" Grid.Row="2" materialDesign:HintAssist.Hint="Phone" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="2" Grid.Row="2" materialDesign:HintAssist.Hint="Postal code" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="0" Grid.Row="3" materialDesign:HintAssist.Hint="Location" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="2" Grid.Row="3" materialDesign:HintAssist.Hint="Street" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="0" Grid.Row="4" materialDesign:HintAssist.Hint="House number" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="2" Grid.Row="4" materialDesign:HintAssist.Hint="User name" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+               <TextBox Grid.Column="0" Grid.Row="5" materialDesign:HintAssist.Hint="Password" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                        Text="{Binding ZustellerModel.Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+               <TextBox Grid.Column="2" Grid.Row="5" materialDesign:HintAssist.Hint="Re-enter password" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
             </Grid>
 
-            <Button Content="Registrieren" Margin="0,20"  HorizontalAlignment="Center"/>
+            <Button Content="Registrieren" Margin="0,20"  HorizontalAlignment="Center" Command="{Binding ZustellerModel.OkCommand}"/>
          </StackPanel>
       </Border>
    </Grid>

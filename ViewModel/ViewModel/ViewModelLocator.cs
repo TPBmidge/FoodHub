@@ -1,13 +1,11 @@
-
-
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace FoodHub.ViewModel
+namespace FoodHub.Logic
 {
-    public class ViewModelLocator
-    {
+  public class ViewModelLocator
+  {
     public ViewModelLocator()
     {
       ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -27,7 +25,7 @@ namespace FoodHub.ViewModel
     public RegistrierungZustellerViewModel Zusteller => ServiceLocator.Current.GetInstance<RegistrierungZustellerViewModel>();
 
     public static void Cleanup()
-        {
-        }
+    {
     }
+  }
 }
