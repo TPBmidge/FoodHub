@@ -24,7 +24,7 @@
          </Border.Effect>
 
          <StackPanel Margin="0,10,0,0" VerticalAlignment="Top">
-            <TextBlock Text="FoodHub" FontSize="30" FontWeight="Bold" Margin="0 0 0 50" HorizontalAlignment="Center"/>
+            <TextBlock Text="BookHub" FontSize="30" FontWeight="Bold" Margin="0 0 0 50" HorizontalAlignment="Center"/>
             <Button Content="Register as customer"  HorizontalAlignment="Center" Style="{StaticResource MaterialDesignToolButton}"/>
             <Button Content="Register as deliverer"  HorizontalAlignment="Center" Style="{StaticResource MaterialDesignToolButton}"/>
             <Button Content="Register food supplier"  HorizontalAlignment="Center" Style="{StaticResource MaterialDesignToolButton}" Click="Register_food_supplier_Button_Click"/>

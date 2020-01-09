@@ -1,4 +1,4 @@
-﻿<Window x:Class="FoodHub.View.RegistrierungsFenster.RegistrierungZusteller"
+﻿<Window x:Class="FoodHub.View.RegistrierungsFenster.RegistrierungCustomer"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -46,7 +46,7 @@
          </Border.Effect>
 
          <StackPanel Margin="0,10,0,0">
-            <TextBlock Text="FoodHub" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center"/>
+            <TextBlock Text="BookHub" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center"/>
 
             <Grid>
                <Grid.ColumnDefinitions>

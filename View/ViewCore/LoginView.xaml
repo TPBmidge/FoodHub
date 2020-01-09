@@ -21,7 +21,7 @@
          </Border.Effect>
 
          <StackPanel Margin="0,10,0,0">
-            <TextBlock Text="FoodHub" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center"/>
+            <TextBlock Text="BookHub" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center"/>
 
             <TextBox materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
             <TextBox materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>

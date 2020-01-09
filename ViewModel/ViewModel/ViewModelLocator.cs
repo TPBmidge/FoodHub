@@ -18,11 +18,11 @@ namespace FoodHub.Logic
         // Create run time view services and models                
       }
       SimpleIoc.Default.Register<MainViewModel>();
-      SimpleIoc.Default.Register<RegistrierungZustellerViewModel>();
+      SimpleIoc.Default.Register<RegistrierungCustomerViewModel>();
     }
 
     public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
-    public RegistrierungZustellerViewModel Zusteller => ServiceLocator.Current.GetInstance<RegistrierungZustellerViewModel>();
+    public RegistrierungCustomerViewModel Zusteller => ServiceLocator.Current.GetInstance<RegistrierungCustomerViewModel>();
 
     public static void Cleanup()
     {

@@ -34,11 +34,11 @@ namespace FoodHub.View
         this.DragMove();
     }
 
-        private void Register_food_supplier_Button_Click(object sender, RoutedEventArgs e)
-        {
-        RegistrierungZusteller registrierungZusteller = new RegistrierungZusteller();
-        registrierungZusteller.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-        registrierungZusteller.Show();
-        }
+    private void Register_food_supplier_Button_Click(object sender, RoutedEventArgs e)
+    {
+      RegistrierungCustomer registrierungCustomer = new RegistrierungCustomer();
+      registrierungCustomer.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+      registrierungCustomer.Show();
     }
+  }
 }

@@ -58,6 +58,7 @@ namespace FoodHub.Logic.BaseTypes
             var requiredAttr = prop.GetCustomAttribute<RequiredAttribute>();
             var minAttr = prop.GetCustomAttribute<MinLengthAttribute>();
             var maxLenAttr = prop.GetCustomAttribute<MaxLengthAttribute>();
+            var emailAttr = prop.GetCustomAttribute<EmailAddressAttribute>();
             if (requiredAttr != null)
             {
               if (string.IsNullOrEmpty(currentValue?.ToString() ?? string.Empty))
@@ -73,6 +74,13 @@ namespace FoodHub.Logic.BaseTypes
               }
             }
             if (minAttr != null)
+            {
+              if ((currentValue?.ToString() ?? string.Empty).Length < minAttr.Length)
+              {
+                Errors.Add(prop.Name, minAttr.ErrorMessage);
+              }
+            }
+            if (emailAttr != null)
             {
               if ((currentValue?.ToString() ?? string.Empty).Length < minAttr.Length)
               {

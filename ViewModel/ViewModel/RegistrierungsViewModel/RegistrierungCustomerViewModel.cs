@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace FoodHub.Logic
 {
-  public class RegistrierungZustellerViewModel : BaseViewModel
+  public class RegistrierungCustomerViewModel : BaseViewModel
   {
-    public RegistrierungZustellerViewModel()
+    public RegistrierungCustomerViewModel()
     {
       if (IsInDesignMode)
       {
@@ -26,6 +26,6 @@ namespace FoodHub.Logic
       }
     }
 
-    public ZustellerModel ZustellerModel { get; set; } = new ZustellerModel();
+    public CustomerModel ZustellerModel { get; set; } = new CustomerModel();
   }
 }

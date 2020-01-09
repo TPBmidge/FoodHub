@@ -81,14 +81,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="RegistrierungsFenster\RegisteriungEssensanbieter.xaml.cs">
-      <DependentUpon>RegisteriungEssensanbieter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RegistrierungsFenster\RegistrierungKunde.xaml.cs">
-      <DependentUpon>RegistrierungKunde.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RegistrierungsFenster\RegistrierungZusteller.xaml.cs">
-      <DependentUpon>RegistrierungZusteller.xaml</DependentUpon>
+    <Compile Include="RegistrierungsFenster\RegistrierungCustomer.xaml.cs">
+      <DependentUpon>RegistrierungCustomer.xaml</DependentUpon>
     </Compile>
     <Page Include="RegistrierungsFenster\AuswahlRegistrierungView.xaml">
       <SubType>Designer</SubType>
@@ -116,15 +110,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RegistrierungsFenster\RegisteriungEssensanbieter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RegistrierungsFenster\RegistrierungKunde.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RegistrierungsFenster\RegistrierungZusteller.xaml">
+    <Page Include="RegistrierungsFenster\RegistrierungCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

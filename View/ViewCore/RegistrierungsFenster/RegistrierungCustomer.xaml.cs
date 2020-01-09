@@ -17,9 +17,9 @@ namespace FoodHub.View.RegistrierungsFenster
   /// <summary>
   /// Interaction logic for RegistrierungZusteller.xaml
   /// </summary>
-  public partial class RegistrierungZusteller : Window
+  public partial class RegistrierungCustomer : Window
   {
-    public RegistrierungZusteller()
+    public RegistrierungCustomer()
     {
       InitializeComponent();
     }
