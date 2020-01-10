@@ -26,6 +26,6 @@ namespace FoodHub.Logic
       }
     }
 
-    public CustomerModel ZustellerModel { get; set; } = new CustomerModel();
+    public CustomerModel customerModel { get; set; } = new CustomerModel();
   }
 }

@@ -39,6 +39,7 @@ namespace FoodHub.Logic.Model
 
     public DateTime Birthdate { get; set; }
 
+    [EmailAddress(ErrorMessage ="Keine Gültige Email")]
     public string EmailAddress { get; set; }
 
     public int Phonenumber { get; set; }

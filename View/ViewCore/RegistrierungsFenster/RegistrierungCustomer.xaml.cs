@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace FoodHub.View.RegistrierungsFenster
 {
   /// <summary>
-  /// Interaction logic for RegistrierungZusteller.xaml
+  /// Interaction logic for RegistrierungCustomer.xaml
   /// </summary>
   public partial class RegistrierungCustomer : Window
   {

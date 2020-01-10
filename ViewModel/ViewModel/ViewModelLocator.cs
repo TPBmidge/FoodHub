@@ -22,7 +22,7 @@ namespace FoodHub.Logic
     }
 
     public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
-    public RegistrierungCustomerViewModel Zusteller => ServiceLocator.Current.GetInstance<RegistrierungCustomerViewModel>();
+    public RegistrierungCustomerViewModel Customer => ServiceLocator.Current.GetInstance<RegistrierungCustomerViewModel>();
 
     public static void Cleanup()
     {

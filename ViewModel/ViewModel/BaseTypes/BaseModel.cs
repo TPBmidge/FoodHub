@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace FoodHub.Logic.BaseTypes
 {
@@ -82,9 +83,9 @@ namespace FoodHub.Logic.BaseTypes
             }
             if (emailAttr != null)
             {
-              if ((currentValue?.ToString() ?? string.Empty).Length < minAttr.Length)
+              if (emailAttr.Equals("Test"))//TODO Fehler beheben
               {
-                Errors.Add(prop.Name, minAttr.ErrorMessage);
+                Errors.Add(prop.Name, emailAttr.ErrorMessage);
               }
             }
             // further attributes
@@ -111,10 +112,11 @@ namespace FoodHub.Logic.BaseTypes
                ?? (_propertyInfos =
                    GetType()
                        .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                       .Where(prop => prop.IsDefined(typeof(RequiredAttribute), true) || prop.IsDefined(typeof(MaxLengthAttribute), true) || prop.IsDefined(typeof(MinLengthAttribute), true))
+                       .Where(prop => prop.IsDefined(typeof(RequiredAttribute), true) || prop.IsDefined(typeof(MaxLengthAttribute), true) || prop.IsDefined(typeof(MinLengthAttribute), true) || prop.IsDefined(typeof(EmailAddressAttribute), true))
                        .ToList());
       }
     }
+    string test = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
 
     private Dictionary<string, string> Errors { get; } = new Dictionary<string, string>();
   }

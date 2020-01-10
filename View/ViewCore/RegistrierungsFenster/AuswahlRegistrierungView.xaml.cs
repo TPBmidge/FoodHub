@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FoodHub.View.RegistrierungsFenster;
 
-namespace FoodHub.View
+namespace FoodHub.View.RegistrierungsFenster
 {
   /// <summary>
   /// Interaction logic for AuswahlRegistrierungView.xaml
