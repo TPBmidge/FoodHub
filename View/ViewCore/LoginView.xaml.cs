@@ -39,11 +39,6 @@ namespace FoodHub.View
 
     private void Register_Button_Click(object sender, RoutedEventArgs e)
     {
-      //TODO: Startup location anpassen
-      AuswahlRegistrierungView auswahlRegistrierungView = new AuswahlRegistrierungView();
-      auswahlRegistrierungView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-      auswahlRegistrierungView.Show();
-      this.Close();
     }
   }
 }

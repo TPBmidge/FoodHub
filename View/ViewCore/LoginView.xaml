@@ -8,7 +8,9 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="330" Width="300"  AllowsTransparency="True" Background="Transparent">
+        Title="MainWindow" Height="330" Width="300"  
+        AllowsTransparency="True" 
+        Background="Transparent">
    <Grid MouseLeftButtonDown="Window_MouseDown">
       <Button Margin="3" VerticalAlignment="Top" HorizontalAlignment="Right" Panel.ZIndex="1" Background="Transparent" Style="{StaticResource MaterialDesignFlatButton}" Padding="5" Click="Shutdown_Button_Click">
          <materialDesign:PackIcon Height="20" Width="20" Kind="Shutdown" Background="Transparent" Foreground="Red"/>

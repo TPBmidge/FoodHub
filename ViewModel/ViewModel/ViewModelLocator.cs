@@ -1,4 +1,5 @@
 using CommonServiceLocator;
+using FoodHub.Logic.ViewModels.AdminViewModels;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
@@ -19,10 +20,12 @@ namespace FoodHub.Logic
       }
       SimpleIoc.Default.Register<MainViewModel>();
       SimpleIoc.Default.Register<RegistrierungCustomerViewModel>();
+      SimpleIoc.Default.Register<BookManagementAdminViewModel>();
     }
 
     public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
     public RegistrierungCustomerViewModel Customer => ServiceLocator.Current.GetInstance<RegistrierungCustomerViewModel>();
+    public BookManagementAdminViewModel ManagementAdmin => ServiceLocator.Current.GetInstance<BookManagementAdminViewModel>();
 
     public static void Cleanup()
     {

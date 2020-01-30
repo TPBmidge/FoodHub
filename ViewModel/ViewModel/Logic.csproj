@@ -69,9 +69,11 @@
     <Compile Include="BaseTypes\BaseModel.cs" />
     <Compile Include="BaseTypes\BaseViewModel.cs" />
     <Compile Include="MainViewModel.cs" />
+    <Compile Include="Model\BookModel.cs" />
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrierungsViewModel\RegistrierungCustomerViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModels\BookManagementAdminViewModel.cs" />
+    <Compile Include="ViewModels\RegistrierungsViewModel\RegistrierungCustomerViewModel.cs" />
     <Compile Include="ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>

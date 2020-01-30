@@ -81,10 +81,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminViews\BookManagementAdminView.xaml.cs">
+      <DependentUpon>BookManagementAdminView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrierungsFenster\RegistrierungCustomer.xaml.cs">
       <DependentUpon>RegistrierungCustomer.xaml</DependentUpon>
     </Compile>
-    <Page Include="RegistrierungsFenster\AuswahlRegistrierungView.xaml">
+    <Page Include="AdminViews\BookManagementAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,9 +102,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="RegistrierungsFenster\AuswahlRegistrierungView.xaml.cs">
-      <DependentUpon>AuswahlRegistrierungView.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
