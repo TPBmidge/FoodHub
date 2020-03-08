@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bookhubModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="AuthorID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Surname" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="bookauthors">
+          <Key>
+            <PropertyRef Name="BookID" />
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="AuthorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bookgenres">
+          <Key>
+            <PropertyRef Name="BookID" />
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="GenreID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="GenreID" Type="int" />
+          <Property Name="FSKID" Type="int" />
+          <Property Name="AuthorID" Type="int" />
+          <Property Name="PublisherID" Type="int" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ratingID" Type="int" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="credentials">
+          <Key>
+            <PropertyRef Name="credentialID" />
+          </Key>
+          <Property Name="credentialID" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="isAdmin" Type="bool" />
+        </EntityType>
+        <EntityType Name="fsk">
+          <Key>
+            <PropertyRef Name="FSKID" />
+          </Key>
+          <Property Name="FSKID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="genres">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="publisher">
+          <Key>
+            <PropertyRef Name="PublisherID" />
+          </Key>
+          <Property Name="PublisherID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ratings">
+          <Key>
+            <PropertyRef Name="ratingID" />
+          </Key>
+          <Property Name="ratingID" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="text" Type="varchar" MaxLength="255" />
+          <Property Name="rating" Type="int" />
+          <Property Name="authorID" Type="int" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Surname" Type="varchar" MaxLength="255" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="EMailAddress" Type="varchar" MaxLength="255" />
+          <Property Name="PhoneNumber" Type="int" />
+          <Property Name="ZipCode" Type="int" />
+          <Property Name="Residence" Type="varchar" MaxLength="255" />
+          <Property Name="Street" Type="varchar" MaxLength="255" />
+          <Property Name="Number" Type="varchar" MaxLength="255" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="credentialID" Type="int" />
+        </EntityType>
+        <Association Name="bookauthors_ibfk_1">
+          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="bookauthors" Type="Self.bookauthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="bookauthors">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookauthors_ibfk_2">
+          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="bookauthors" Type="Self.bookauthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="bookauthors">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookauthors_ibfk_3">
+          <End Role="authors" Type="Self.authors" Multiplicity="1" />
+          <End Role="bookauthors" Type="Self.bookauthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="authors">
+              <PropertyRef Name="AuthorID" />
+            </Principal>
+            <Dependent Role="bookauthors">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookgenres_ibfk_1">
+          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="bookgenres" Type="Self.bookgenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="bookgenres">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookgenres_ibfk_2">
+          <End Role="genres" Type="Self.genres" Multiplicity="1" />
+          <End Role="bookgenres" Type="Self.bookgenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genres">
+              <PropertyRef Name="GenreID" />
+            </Principal>
+            <Dependent Role="bookgenres">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_1">
+          <End Role="fsk" Type="Self.fsk" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fsk">
+              <PropertyRef Name="FSKID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="FSKID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_2">
+          <End Role="publisher" Type="Self.publisher" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publisher">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_3">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_4">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_5">
+          <End Role="ratings" Type="Self.ratings" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ratings">
+              <PropertyRef Name="ratingID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="ratingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ratings_ibfk_1">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="ratings" Type="Self.ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ratings">
+              <PropertyRef Name="authorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_ibfk_1">
+          <End Role="credentials" Type="Self.credentials" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credentials">
+              <PropertyRef Name="credentialID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="credentialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bookhubModelStoreContainer">
+          <EntitySet Name="authors" EntityType="Self.authors" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="bookauthors" EntityType="Self.bookauthors" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="bookgenres" EntityType="Self.bookgenres" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="books" EntityType="Self.books" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="credentials" EntityType="Self.credentials" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="fsk" EntityType="Self.fsk" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="genres" EntityType="Self.genres" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="publisher" EntityType="Self.publisher" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="ratings" EntityType="Self.ratings" Schema="bookhub" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="bookhub" store:Type="Tables" />
+          <AssociationSet Name="bookauthors_ibfk_1" Association="Self.bookauthors_ibfk_1">
+            <End Role="books" EntitySet="books" />
+            <End Role="bookauthors" EntitySet="bookauthors" />
+          </AssociationSet>
+          <AssociationSet Name="bookauthors_ibfk_2" Association="Self.bookauthors_ibfk_2">
+            <End Role="books" EntitySet="books" />
+            <End Role="bookauthors" EntitySet="bookauthors" />
+          </AssociationSet>
+          <AssociationSet Name="bookauthors_ibfk_3" Association="Self.bookauthors_ibfk_3">
+            <End Role="authors" EntitySet="authors" />
+            <End Role="bookauthors" EntitySet="bookauthors" />
+          </AssociationSet>
+          <AssociationSet Name="bookgenres_ibfk_1" Association="Self.bookgenres_ibfk_1">
+            <End Role="books" EntitySet="books" />
+            <End Role="bookgenres" EntitySet="bookgenres" />
+          </AssociationSet>
+          <AssociationSet Name="bookgenres_ibfk_2" Association="Self.bookgenres_ibfk_2">
+            <End Role="genres" EntitySet="genres" />
+            <End Role="bookgenres" EntitySet="bookgenres" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_1" Association="Self.books_ibfk_1">
+            <End Role="fsk" EntitySet="fsk" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_2" Association="Self.books_ibfk_2">
+            <End Role="publisher" EntitySet="publisher" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_3" Association="Self.books_ibfk_3">
+            <End Role="category" EntitySet="category" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_4" Association="Self.books_ibfk_4">
+            <End Role="users" EntitySet="users" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_5" Association="Self.books_ibfk_5">
+            <End Role="ratings" EntitySet="ratings" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="ratings_ibfk_1" Association="Self.ratings_ibfk_1">
+            <End Role="users" EntitySet="users" />
+            <End Role="ratings" EntitySet="ratings" />
+          </AssociationSet>
+          <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
+            <End Role="credentials" EntitySet="credentials" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bookhubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="AuthorID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookauthors" Relationship="Self.bookauthors_ibfk_3" FromRole="authors" ToRole="bookauthors" />
+        </EntityType>
+        <EntityType Name="bookauthors">
+          <Key>
+            <PropertyRef Name="BookID" />
+            <PropertyRef Name="AuthorID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="AuthorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="authors" Relationship="Self.bookauthors_ibfk_3" FromRole="bookauthors" ToRole="authors" />
+          <NavigationProperty Name="books" Relationship="Self.bookauthors_ibfk_1" FromRole="bookauthors" ToRole="books" />
+          <NavigationProperty Name="books1" Relationship="Self.bookauthors_ibfk_2" FromRole="bookauthors" ToRole="books" />
+        </EntityType>
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="GenreID" Type="Int32" />
+          <Property Name="FSKID" Type="Int32" />
+          <Property Name="AuthorID" Type="Int32" />
+          <Property Name="PublisherID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ratingID" Type="Int32" />
+          <NavigationProperty Name="bookauthors" Relationship="Self.bookauthors_ibfk_1" FromRole="books" ToRole="bookauthors" />
+          <NavigationProperty Name="bookauthors1" Relationship="Self.bookauthors_ibfk_2" FromRole="books" ToRole="bookauthors" />
+          <NavigationProperty Name="fsk" Relationship="Self.books_ibfk_1" FromRole="books" ToRole="fsk" />
+          <NavigationProperty Name="publisher" Relationship="Self.books_ibfk_2" FromRole="books" ToRole="publisher" />
+          <NavigationProperty Name="category" Relationship="Self.books_ibfk_3" FromRole="books" ToRole="category" />
+          <NavigationProperty Name="users" Relationship="Self.books_ibfk_4" FromRole="books" ToRole="users" />
+          <NavigationProperty Name="ratings" Relationship="Self.books_ibfk_5" FromRole="books" ToRole="ratings" />
+          <NavigationProperty Name="genres" Relationship="Self.bookgenres" FromRole="books" ToRole="genres" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="books" Relationship="Self.books_ibfk_3" FromRole="category" ToRole="books" />
+        </EntityType>
+        <EntityType Name="credentials">
+          <Key>
+            <PropertyRef Name="credentialID" />
+          </Key>
+          <Property Name="credentialID" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="isAdmin" Type="Boolean" />
+          <NavigationProperty Name="users" Relationship="Self.users_ibfk_1" FromRole="credentials" ToRole="users" />
+        </EntityType>
+        <EntityType Name="fsk">
+          <Key>
+            <PropertyRef Name="FSKID" />
+          </Key>
+          <Property Name="FSKID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="books" Relationship="Self.books_ibfk_1" FromRole="fsk" ToRole="books" />
+        </EntityType>
+        <EntityType Name="genres">
+          <Key>
+            <PropertyRef Name="GenreID" />
+          </Key>
+          <Property Name="GenreID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="books" Relationship="Self.bookgenres" FromRole="genres" ToRole="books" />
+        </EntityType>
+        <EntityType Name="publisher">
+          <Key>
+            <PropertyRef Name="PublisherID" />
+          </Key>
+          <Property Name="PublisherID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="books" Relationship="Self.books_ibfk_2" FromRole="publisher" ToRole="books" />
+        </EntityType>
+        <EntityType Name="ratings">
+          <Key>
+            <PropertyRef Name="ratingID" />
+          </Key>
+          <Property Name="ratingID" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="text" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="authorID" Type="Int32" />
+          <Property Name="Date" Type="DateTime" />
+          <NavigationProperty Name="books" Relationship="Self.books_ibfk_5" FromRole="ratings" ToRole="books" />
+          <NavigationProperty Name="users" Relationship="Self.ratings_ibfk_1" FromRole="ratings" ToRole="users" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" />
+          <Property Name="EMailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="Int32" />
+          <Property Name="ZipCode" Type="Int32" />
+          <Property Name="Residence" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="credentialID" Type="Int32" />
+          <NavigationProperty Name="books" Relationship="Self.books_ibfk_4" FromRole="users" ToRole="books" />
+          <NavigationProperty Name="credentials" Relationship="Self.users_ibfk_1" FromRole="users" ToRole="credentials" />
+          <NavigationProperty Name="ratings" Relationship="Self.ratings_ibfk_1" FromRole="users" ToRole="ratings" />
+        </EntityType>
+        <Association Name="bookauthors_ibfk_3">
+          <End Role="authors" Type="Self.authors" Multiplicity="1" />
+          <End Role="bookauthors" Type="Self.bookauthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="authors">
+              <PropertyRef Name="AuthorID" />
+            </Principal>
+            <Dependent Role="bookauthors">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookauthors_ibfk_1">
+          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="bookauthors" Type="Self.bookauthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="bookauthors">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookauthors_ibfk_2">
+          <End Role="books" Type="Self.books" Multiplicity="1" />
+          <End Role="bookauthors" Type="Self.bookauthors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="books">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="bookauthors">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_1">
+          <End Role="fsk" Type="Self.fsk" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fsk">
+              <PropertyRef Name="FSKID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="FSKID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_2">
+          <End Role="publisher" Type="Self.publisher" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="publisher">
+              <PropertyRef Name="PublisherID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_3">
+          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_4">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="books_ibfk_5">
+          <End Role="ratings" Type="Self.ratings" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ratings">
+              <PropertyRef Name="ratingID" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="ratingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_ibfk_1">
+          <End Role="credentials" Type="Self.credentials" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credentials">
+              <PropertyRef Name="credentialID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="credentialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ratings_ibfk_1">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="ratings" Type="Self.ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ratings">
+              <PropertyRef Name="authorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookgenres">
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <End Role="genres" Type="Self.genres" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="bookhubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="authors" EntityType="Self.authors" />
+          <EntitySet Name="bookauthors" EntityType="Self.bookauthors" />
+          <EntitySet Name="books" EntityType="Self.books" />
+          <EntitySet Name="category" EntityType="Self.category" />
+          <EntitySet Name="credentials" EntityType="Self.credentials" />
+          <EntitySet Name="fsk" EntityType="Self.fsk" />
+          <EntitySet Name="genres" EntityType="Self.genres" />
+          <EntitySet Name="publisher" EntityType="Self.publisher" />
+          <EntitySet Name="ratings" EntityType="Self.ratings" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="bookauthors_ibfk_3" Association="Self.bookauthors_ibfk_3">
+            <End Role="authors" EntitySet="authors" />
+            <End Role="bookauthors" EntitySet="bookauthors" />
+          </AssociationSet>
+          <AssociationSet Name="bookauthors_ibfk_1" Association="Self.bookauthors_ibfk_1">
+            <End Role="books" EntitySet="books" />
+            <End Role="bookauthors" EntitySet="bookauthors" />
+          </AssociationSet>
+          <AssociationSet Name="bookauthors_ibfk_2" Association="Self.bookauthors_ibfk_2">
+            <End Role="books" EntitySet="books" />
+            <End Role="bookauthors" EntitySet="bookauthors" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_1" Association="Self.books_ibfk_1">
+            <End Role="fsk" EntitySet="fsk" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_2" Association="Self.books_ibfk_2">
+            <End Role="publisher" EntitySet="publisher" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_3" Association="Self.books_ibfk_3">
+            <End Role="category" EntitySet="category" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_4" Association="Self.books_ibfk_4">
+            <End Role="users" EntitySet="users" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="books_ibfk_5" Association="Self.books_ibfk_5">
+            <End Role="ratings" EntitySet="ratings" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="users_ibfk_1" Association="Self.users_ibfk_1">
+            <End Role="credentials" EntitySet="credentials" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="ratings_ibfk_1" Association="Self.ratings_ibfk_1">
+            <End Role="users" EntitySet="users" />
+            <End Role="ratings" EntitySet="ratings" />
+          </AssociationSet>
+          <AssociationSet Name="bookgenres" Association="Self.bookgenres">
+            <End Role="books" EntitySet="books" />
+            <End Role="genres" EntitySet="genres" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bookhubModelStoreContainer" CdmEntityContainer="bookhubEntities">
+          <EntitySetMapping Name="authors">
+            <EntityTypeMapping TypeName="bookhubModel.authors">
+              <MappingFragment StoreEntitySet="authors">
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookauthors">
+            <EntityTypeMapping TypeName="bookhubModel.bookauthors">
+              <MappingFragment StoreEntitySet="bookauthors">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="bookhubModel.books">
+              <MappingFragment StoreEntitySet="books">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="FSKID" ColumnName="FSKID" />
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ratingID" ColumnName="ratingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category">
+            <EntityTypeMapping TypeName="bookhubModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="credentials">
+            <EntityTypeMapping TypeName="bookhubModel.credentials">
+              <MappingFragment StoreEntitySet="credentials">
+                <ScalarProperty Name="credentialID" ColumnName="credentialID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fsk">
+            <EntityTypeMapping TypeName="bookhubModel.fsk">
+              <MappingFragment StoreEntitySet="fsk">
+                <ScalarProperty Name="FSKID" ColumnName="FSKID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genres">
+            <EntityTypeMapping TypeName="bookhubModel.genres">
+              <MappingFragment StoreEntitySet="genres">
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="publisher">
+            <EntityTypeMapping TypeName="bookhubModel.publisher">
+              <MappingFragment StoreEntitySet="publisher">
+                <ScalarProperty Name="PublisherID" ColumnName="PublisherID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ratings">
+            <EntityTypeMapping TypeName="bookhubModel.ratings">
+              <MappingFragment StoreEntitySet="ratings">
+                <ScalarProperty Name="ratingID" ColumnName="ratingID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="authorID" ColumnName="authorID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="bookhubModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="EMailAddress" ColumnName="EMailAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="credentialID" ColumnName="credentialID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="bookgenres" TypeName="bookhubModel.bookgenres" StoreEntitySet="bookgenres">
+            <EndProperty Name="books">
+              <ScalarProperty Name="BookID" ColumnName="BookID" />
+            </EndProperty>
+            <EndProperty Name="genres">
+              <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
